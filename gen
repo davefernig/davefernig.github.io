@@ -1,0 +1,37 @@
+#!/usr/bin/python
+
+import datetime
+import sys
+
+date = str(datetime.datetime.today().date())
+name = sys.argv[1]
+
+filename = "posts/" + date + ".html"
+exists = False
+try :
+    exists = bool(open(filename))
+except:
+    pass
+
+if exists:
+    print("You've already started a post today.")
+else:
+    # Create the new file
+    with open(filename, "w") as outfile:
+        outfile.write('<link rel="stylesheet" href="../css/main.css">\n')
+        outfile.write(date + ": " + name + "\n")
+        outfile.write("<br/>\n")
+        outfile.write("<br/>\n")
+        outfile.write('<a href="../index.html">home</a>')
+    # And update the archive
+    archive = open("index.html").read().split("\n")
+    head = archive[:2]
+    line = ["<br/>", "<br/>"]
+    post = ['<a href="' + filename + '">' + date +'</a>']
+    tail = archive[3:]
+    new_archive = "\n".join(head + line + post + tail)
+    with open("index.html", "w") as outfile:
+        outfile.write(new_archive)
+
+print("Start editing:")
+print("gvim " + filename)
