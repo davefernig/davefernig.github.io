@@ -18,18 +18,20 @@ if exists:
 else:
     # Create the new file
     with open(filename, "w") as outfile:
+        outfile.write('<meta name="viewport" content="width=device-width, initial-scale=1.0">')
         outfile.write('<link rel="stylesheet" href="../css/main.css">\n')
         outfile.write(date + ": " + name + "\n")
         outfile.write("<br/>\n")
         outfile.write("<br/>\n")
         outfile.write('<a href="../index.html">home</a>')
-    # And update the archive
+    #And update the archive
     archive = open("index.html").read().split("\n")
-    head = archive[:2]
+    head = archive[:3]
     line = ["<br/>", "<br/>"]
     post = ['<a href="' + filename + '">' + date +'</a>']
-    tail = archive[3:]
+    tail = archive[4:]
     new_archive = "\n".join(head + line + post + tail)
+    print(new_archive)
     with open("index.html", "w") as outfile:
         outfile.write(new_archive)
 
