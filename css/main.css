@@ -1,7 +1,8 @@
 body {
   font-size: 14pt;
-  font-family: "Times New Roman", Times, serif;
-  color: #272521;
+  /*font-family: "Times New Roman", Times, serif;*/
+  font: 18px  "public-sans";
+  color: "black";
   line-height: 16pt;
   padding-left: 5vw;
   padding-right: 5vw;
