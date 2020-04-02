@@ -28,7 +28,7 @@ else:
     archive = open("index.html").read().split("\n")
     head = archive[:3]
     line = ["<br/>", "<br/>"]
-    post = ['<a href="' + filename + '">' + date +'</a>']
+    post = ['<a href="' + filename + '">' + date + ": " + name + '</a>']
     tail = archive[4:]
     new_archive = "\n".join(head + line + post + tail)
     print(new_archive)
